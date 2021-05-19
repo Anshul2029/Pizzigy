@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Track Order</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
+
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/animate.css" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+  <link rel="stylesheet" href="css/magnific-popup.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+    integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="css/aos.css" />
+
+  <link rel="stylesheet" href="css/ionicons.min.css" />
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css" />
+  <link rel="stylesheet" href="css/jquery.timepicker.css" />
+
+  <link rel="stylesheet" href="css/flaticon.css" />
+  <link rel="stylesheet" href="css/icomoon.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/styleorder.css" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span
+          class="flaticon-pizza-1 mr-1"></span>Pizza<br /><small>Delicous</small></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a href="menu.html" class="nav-link">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a href="services.html" class="nav-link">Services</a>
+          </li>
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container px-1 px-md-4 py-5 mx-auto">
+    <% if(pendingOrders && pendingOrders.length > 0) { %>
+    <div class="card" style="background-color: #343a40;">
+      <div class="row d-flex justify-content-between px-3 top" style="margin-left: 300px">
+        <!-- <div class="d-flex"></div> -->
+        <div class="d-flex">
+          <h5 class="text-primary font-weight-bold">
+            ORDER :
+            <span class="text-primary font-weight-bold">#Y34XDHR</span>
+          </h5>
+        </div>
+        <div class="d-flex flex-column text-sm">
+          <p class="mb-0" style="color: black;">
+            Expected Arrival :
+            <span class="font-weight-bold">07/12/2020</span>
+          </p>
+        </div>
+      </div>
+      <!-- Add class 'active' to progress -->
+      <% for(let i = 0; i < pendingOrders.length; i++) {%>
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-12">
+          <!-- <p>Order: <%= i+1%></p> -->
+          <ul id="progressbar" class="text-center">
+            <% for(let j = 1; j <= 4; j++) { %> <% if(j <=
+              pendingOrders[i].status) {%>
+            <li class="active step0"></li>
+            <%} else { %>
+            <li class="step0"></li>
+            <% } %> <% } %>
+          </ul>
+        </div>
+      </div>
+
+      <% } %>
+
+      <div class="container">
+        <div class="row" style="padding-left: 12%">
+          <div class="col-3">
+            <img class="icon" src="https://i.imgur.com/9nnc9Et.png" />
+            <div class="">
+              <p class="font-weight-bold">Order<br />Processed</p>
+            </div>
+          </div>
+          <div class="col-3">
+            <img class="icon" src="https://i.imgur.com/u1AzR7w.png" />
+            <div class="">
+              <p class="font-weight-bold">Preparing<br />Food</p>
+            </div>
+          </div>
+          <div class="col-3">
+            <img class="icon" src="https://i.imgur.com/TkPm63y.png" />
+            <div class="">
+              <p class="font-weight-bold">Out for<br />Delivery</p>
+            </div>
+          </div>
+          <div class="col-3">
+            <img class="icon" src="https://i.imgur.com/HdsziHP.png" />
+            <div class="">
+              <p class="font-weight-bold">Order<br />Arrived</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } else if(pendingOrders && pendingOrders.length == 0) { %>
+    <div class="">
+      <h1>Hooray! No pending orders</h1>
+    </div>
+    <% } %>
+  </div>
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.easing.1.3.js"></script>
+  <script src="/js/jquery.waypoints.min.js"></script>
+  <script src="/js/jquery.stellar.min.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/jquery.magnific-popup.min.js"></script>
+  <script src="/js/aos.js"></script>
+  <script src="/js/jquery.animateNumber.min.js"></script>
+  <script src="/js/bootstrap-datepicker.js"></script>
+  <script src="/js/jquery.timepicker.min.js"></script>
+  <script src="/js/scrollax.min.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="/js/google-map.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh6AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+    integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

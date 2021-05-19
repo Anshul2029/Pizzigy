@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cart</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css"
+    />
+
+    <!-- Bootstrap CDN -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/animate.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+      integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="css/aos.css" />
+
+    <link rel="stylesheet" href="css/ionicons.min.css" />
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="css/jquery.timepicker.css" />
+
+    <link rel="stylesheet" href="css/flaticon.css" />
+    <link rel="stylesheet" href="css/icomoon.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+      id="ftco-navbar"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          ><span class="flaticon-pizza-1 mr-1"></span>Pizza<br /><small
+            >Delicous</small
+          ></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#ftco-nav"
+          aria-controls="ftco-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a href="menu.html" class="nav-link">Menu</a>
+            </li>
+            <li class="nav-item">
+              <a href="services.html" class="nav-link">Services</a>
+            </li>
+            <li class="nav-item">
+              <a href="blog.html" class="nav-link">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a href="about.html" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="contact.html" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid" style="padding: 0% 10%">
+      <div class="row px-5">
+        <div class="col-md-7">
+          <div class="shopping-cart">
+            <br /><br />
+            <div class="col-md-7 heading-section text-center ftco-animate">
+              <h2 class="mb-4">Order</h2>
+              <p class="flip">
+                <span class="deg1"></span><span class="deg2"></span
+                ><span class="deg3"></span>
+              </p>
+            </div>
+            <br /><br />
+
+            <% for(var i=0; i < pizzalist.length; i++) { %>
+            <div class="">
+              <div class="row">
+                <div class="col-md-3 pl-0">
+                  <img
+                    src="/images/<%=pizzalist[i].title%>.jpg"
+                    alt="Image1"
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <h3 class="pt-1"><%=pizzalist[i].name%></h3>
+                  <h5 class="text-secondary">Pizza</h5>
+                  <h5 class="pt-1 item-price">₹<%=pizzalist[i].price%></h5>
+
+                  <form action="/orders/remove/<%= i %>" method="post">
+                    <button
+                      type="submit"
+                      class="btn btn-danger mx-2"
+                      name="remove"
+                    >
+                      Remove
+                    </button>
+                  </form>
+                </div>
+                <div class="col-md-3 py-5">
+                  <div>
+                    <button
+                      name="minus"
+                      type="button"
+                      class="btn bg-light border rounded-circle"
+                      onclick="decreaseCnt('<%= i %>', '<%= pizzalist[i]._id %>')"
+                    >
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <input
+                      type="text"
+                      name="check"
+                      id="<%= pizzalist[i]._id %>"
+                      value="<%=numberlist[i]%>"
+                      style="text-align: center; background-color: white"
+                      class="form-control w-25 d-inline item-cnt"
+                      onchange="updateCnt('<%= i %>', '<%= pizzalist[i]._id %>')"
+                    />
+                    <button
+                      name="plus"
+                      type="button"
+                      class="btn bg-light border rounded-circle"
+                      onclick="increaseCnt('<%= i %>', '<%= pizzalist[i]._id %>')"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br /><br />
+            <% } %>
+          </div>
+          <a
+            href="/home"
+            class="ml-2 btn btn-white btn-outline-white"
+            style="
+              font-size: 18px;
+              padding-left: 30px;
+              margin-left: 100px;
+              padding-right: 30px;
+            "
+            >Add More</a
+          >
+        </div>
+        <div class="col-md-4 offset-md-1 mt-5 h-25">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2 class="mb-4">Bill</h2>
+            <p class="flip">
+              <span class="deg1"></span><span class="deg2"></span
+              ><span class="deg3"></span>
+            </p>
+          </div>
+          <br />
+          <div class="pt-4 price-details">
+            <h5>PRICE DETAILS</h5>
+            <div class="row">
+              <h6 class="col-6">Total: Rs.</h6>
+              <h6 class="col-6" style="margin-left: -120px;" id="cartTotal">0</h6>
+            </div>
+            <br />
+            <br />
+            <br />
+
+            <form action="/payment/<%= customer._id %>" method="POST">
+              <script
+                src="//checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                data-key="<%= key %>"
+                data-amount=""
+                data-currency="inr"
+                data-name="Pizzigy"
+                data-description="Wholesome pizzas and Enjoyment"
+                data-locale="auto"
+              ></script>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      if (document.readyState == "loading") {
+        document.addEventListener("DOMContentLoaded", updateTotal);
+      } else {
+        updateTotal();
+      }
+      function increaseCnt(index, id) {
+        var i = parseInt(index);
+        $.ajax({
+          url: "http://localhost:3040/orders/increment/" + index,
+          type: "get",
+          success: function (data) {
+            document.getElementById(id).value = data["newCnt"];
+            updateTotal();
+          },
+        });
+      }
+      function decreaseCnt(index, id) {
+        var i = parseInt(index);
+        $.ajax({
+          url: "http://localhost:3040/orders/decrement/" + index,
+          type: "get",
+          success: function (data) {
+            document.getElementById(id).value = data["newCnt"];
+            updateTotal();
+          },
+        });
+      }
+      function updateCnt(index, id) {
+        var i = parseInt(index);
+        $.ajax({
+          url: "http://localhost:3040/orders/update/" + index,
+          type: "get",
+          data: {
+            newCnt: document.getElementById(id).value,
+          },
+          success: function (data) {
+            document.getElementById(id).value = data["newCnt"];
+            updateTotal();
+          },
+        });
+      }
+      function updateTotal() {
+        const itemCntInputs = document.getElementsByClassName("item-cnt");
+        const itemPrices = document.getElementsByClassName("item-price");
+        let total = 0;
+        for (let i = 0; i < itemCntInputs.length; i++) {
+          let price = parseFloat(itemPrices[i].innerHTML.substr(1));
+          let cnt = parseInt(itemCntInputs[i].value);
+          total += price * cnt;
+        }
+        document.getElementById("cartTotal").innerText = total;
+        var dataAmount = document.createAttribute("data-amount");
+        dataAmount.value = total;
+        document
+          .getElementsByClassName("stripe-button")[0]
+          .attributes.setNamedItem(dataAmount);
+      }
+    </script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.easing.1.3.js"></script>
+    <script src="/js/jquery.waypoints.min.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/jquery.animateNumber.min.js"></script>
+    <script src="/js/bootstrap-datepicker.js"></script>
+    <script src="/js/jquery.timepicker.min.js"></script>
+    <script src="/js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/js/google-map.js"></script>
+    <script src="/js/main.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh6AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+      integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

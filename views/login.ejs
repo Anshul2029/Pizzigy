@@ -1,0 +1,141 @@
+<html>
+  <head>
+    <title>PIZIGGY</title>
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/util.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div
+      class="limiter"
+      style="height: auto; background-image: url('images/loginbg.png')"
+    >
+      <div
+        style="
+          font-family: 'Satisfy', cursive;
+          font-size: 12vh;
+          color: rgb(174, 241, 48);
+          padding-top: 9%;
+          padding-left: 40%;
+        "
+      >
+        Pizzigy
+      </div>
+      <div
+        class="container-login100"
+        style="height: auto; background-image: url('images/loginbg.png')"
+      >
+        <div
+          class="wrap-login100"
+          style="margin-top: 9%; margin-bottom: 5%; height: 600px; width: 84%"
+        >
+          <form
+            class="login100-form validate-form"
+            action="/login"
+            method="POST"
+            style="
+              padding-top: 12%;
+              padding-left: 8%;
+              padding-bottom: 0px;
+              background-color: aliceblue;
+            "
+          >
+            <div>
+              <span
+                class="login100-form-title p-b-34"
+                style="padding-left: 10%"
+              >
+                Account Login
+              </span>
+
+              <div
+                class="wrap-input100 rs1-wrap-input100 validate-input m-b-20"
+                data-validate="Type user name"
+                style="width: 120%; border-color: rgb(156, 177, 157)"
+              >
+                <input
+                  id="first-name"
+                  class="input100"
+                  type="text"
+                  name="username"
+                  placeholder="User name"
+                />
+                <span class="focus-input100"></span>
+              </div>
+              <div
+                class="wrap-input100 rs1-wrap-input100 validate-input m-b-20"
+                data-validate="Type password"
+                style="width: 120%; border-color: rgb(156, 177, 157)"
+              >
+                <input
+                  class="input100"
+                  type="password"
+                  name="pass"
+                  placeholder="Password"
+                />
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="container-login100-form-btn" style="width: 120%">
+                <button type="submit" class="login100-form-btn">Sign in</button>
+              </div>
+
+              <div class="w-full text-center p-t-27 p-b-239">
+                <span
+                  class="txt2"
+                  style="font-size: medium; color: black; left: 5%"
+                  >New Member at Piziggy ?
+                </span>
+                <span style="padding-left: 6px">
+                  <a href="/register" class="txt2" style="font-size: medium">
+                    <u>Sign Up Here</u>
+                  </a> </span
+                ><br />
+                <span
+                  class="txt2"
+                  style="font-size: medium; color: black; left: 5%"
+                  >Forgot Password ?
+                </span>
+                <span style="padding-left: 6px">
+                  <a href="/reset" class="txt2" style="font-size: medium">
+                    <u>Reset Here</u> </a
+                  ><br />
+                </span>
+              </div>
+            </div>
+          </form>
+          <div
+            class="login100-more"
+            style="background-image: url('images/loginpizza.jpg')"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
