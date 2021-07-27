@@ -4,9 +4,9 @@
   "description": "pizza delivery",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon start"
+    "start": "nodemon app.js"
   },
-  "author": "Anshul",
+  "author": "Surendra",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -23,14 +23,6 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "sessionstorage": "^0.1.0",
-    "stripe": "^8.122.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Anshul2029/osc.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Anshul2029/osc/issues"
-  },
-  "homepage": "https://github.com/Anshul2029/osc#readme"
+    "stripe": "^8.165.0"
+  }
 }

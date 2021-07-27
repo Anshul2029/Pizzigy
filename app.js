@@ -11,6 +11,7 @@ var sendgridtransport = require("nodemailer-sendgrid-transport");
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
+const RESET_LINK = process.env.RESET_LINK;
 const transporter = nodemailer.createTransport(
   sendgridtransport({
     auth: {
@@ -118,7 +119,6 @@ app.post("/payment/:Id", isSignedIn, function (req, res) {
   let total = 0;
   for (let i = 0; i < pizzalist.length; i++) {
     const pizza = pizzalist[i];
-    pizza.cnt = numberlist[i];
     total = total + parseInt(numberlist[i]) * parseFloat(pizza.price);
   }
   stripe.customers
@@ -202,7 +202,10 @@ app.get("/customer/ordertrack/:Id", isSignedIn, function (req, res) {
         console.log(err);
       }
       console.log(pendingOrders);
-      return res.render("ordertrack", { pendingOrders });
+      return res.render("ordertrack", {
+        person: sessionstorage.getItem("user"),
+        pendingOrders,
+      });
     }
   );
 });
@@ -217,7 +220,10 @@ app.get("/customer/prev_orders/:Id", isSignedIn, function (req, res) {
         res.status(400).send("CUSTOMER COMPLETED ORDER RETRIEVAL ERROR");
         console.log(err);
       }
-      return res.render("prev_orders", { completedOrders });
+      return res.render("prev_orders", {
+        customer: sessionstorage.getItem("user"),
+        completedOrders,
+      });
     });
 });
 
@@ -443,15 +449,23 @@ app.post("/newpassword/:id", function (req, res) {
       if (err) {
         console.log(err);
       } else {
-        transporter.sendMail({
-          to: person.email,
-          from: "ats465151@gmail.com",
-          subject: "Pizzigy - Password Reset",
-          html: `
+        transporter
+          .sendMail({
+            to: person.email,
+            from: "ats465151@gmail.com",
+            subject: "Pizzigy - Password Reset",
+            html: `
             <h2>Congrats!! Your password has been reset successfully.</h2>
             `,
-        });
-        res.redirect("/login");
+          })
+          .then((msg) => {
+            console.log(msg);
+            res.redirect("/login");
+          })
+          .catch((err) => {
+            console.log(err);
+            res.redirect("/login");
+          });
       }
     }
   );
@@ -460,6 +474,7 @@ app.post("/newpassword/:id", function (req, res) {
 app.post("/reset", function (req, res) {
   var resetmail = req.body.resetemail;
   usermodel.findOne({ email: resetmail }, function (err, member) {
+    console.log(RESET_LINK + member._id);
     if (err) {
       res.redirect("/register");
     } else if (!member) {
@@ -469,12 +484,11 @@ app.post("/reset", function (req, res) {
         to: member.email,
         from: "ats465151@gmail.com",
         subject: "Pizzigy - Password Reset",
-        html:
-          `
+        html: `
             <h2>Greeting from Pizzigy!!</h2>
-            <h3>Password reset link</h3><br><p>Click on this <a href="http://localhost:3040/reset/` +
-          member._id +
-          `"><u>link</u></a> for password reset.</p>
+            <h3>Password reset link</h3><br><p>Click on this <a href="${
+              RESET_LINK + member._id
+            }"><u>link</u></a> for password reset.</p>
             `,
       });
       res.render("canceltab", { member: member });
@@ -734,6 +748,7 @@ function isDeliveryBoyIdPresentInPendingOrders(
   return false;
 }
 
-app.listen(3040, "localhost", function () {
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, "localhost", function () {
   console.log("CONNECTED TO SERVER 3040");
 });
